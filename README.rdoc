@@ -1,46 +1,47 @@
-= Standalone Cucumber Test Suite
+= Комплект инструментов для интеграционного тестирования внешних сайтов на Ruby
 
-== Introduction
+== Вводная
 
-Sometimes you inherit a non Rails or non Rack based web app such as PHP, Perl, Java / JEE, etc. I like using cucumber for functional testing so I put together this project structure to use as a starting point for testing non Ruby web based applications.
+Иногда Вам достается проект, написанный не на Rails или каком-то основанном на Rack фреймворке. Например, на PHP, Perl'е, Java / JEE и т.д. Вы думаете, как бы здорово было бы тестировать всё это дело при помощи привычных инструментов интеграционного тестирования.
 
-I've included a simple search.feature examples that uses Google. To switch to use your own development or staging server adjust the URL in features/support/env.rb. I have this example project setup to use Capybara with Webdriver (Selenium) but you can easily switch this to use Culerity or Webrat by editing features/support/env.rb.
+Для решения этой задачи мои предшественники (см. историю форков) сделали, Злобный Рубист перевёл шаги, а я собрал воедино этот небольшой проект.
 
-Pull requests with updates/enhancements/bug fixes are always welcome!
+Я включил в него пример проверки неудачной аутентификации на mail.ru в качестве демонстрации базовых возможностей.
 
-== Project Layout
+== Скелет проекта
 
-* features/*.feature : cucumber features
-* features/step_definitions/web_steps.rb : generic steps that apply to all features
-* features/step_definintions/[feature]_steps.rb : steps specific to an individual feature file
-* support/env.rb : configures the driver and the hostname to use
+* features/*.feature : сценарии cucumber
+* features/step_definitions/web_steps_ru.rb : шаги, которые могут понадобиться в любых сценариях
+* features/step_definintions/[feature]_steps.rb : шаги, специфичные для конкретных сценариев
+* support/env.rb : конфигурирует драйвер (selenium) и имя хоста
 
-== Prerequisites
+== Что нужно
 
 * Ruby http://www.ruby-lang.org/en/downloads/
 * Ruby Gems http://rubygems.org/
-* Bundler: sudo gem install bundler rake
+* Bundler:gem install bundler rake
 
-== Configuration
+== Конфигурирование
 
-* sudo bundle install
+* bundle install
 
-== Running Features
+== Запуск сценариев
 
-* To run all features: rake
-* To run a specific feature: cucumber features/search.feature
+* Чтобы запустить все сценарии: bundle exec rake
+* Чтобы запустить конкретный сценарий: bundle exec cucumber features/auth.feature
 
-== Debugging
+== Отладка
 
-* To debug a specific step call save_and_open_page within the step
+* Чтобы посмотреть страницу на определенном этапе, просто напишите шаг "То показать страницу".
 
-== Additional Documentation
+== Дополнительная информация
 
-* http://cukes.info (for general cucumber information)
-* http://github.com/jnicklas/capybara (for actions such as click_link, click_button, etc...)
+* http://cukes.info (общая информация о cucumber)
+* http://github.com/jnicklas/capybara (описания действий в шагах, такие как click_link, click_button, etc...)
 
-== Contributors
+== Кто помогал
 
-* {Cucumber mailing list for the project structure}[http://groups.google.com/group/cukes/browse_thread/thread/297163800eaf2968?pli=1]
+* {Список рассылки Cucumber}[http://groups.google.com/group/cukes/browse_thread/thread/297163800eaf2968?pli=1]
 * {Todd Huss}[http://gabrito.com]
+* {Злобный Рубист}[http://zloy.rubyclub.com.ua/blogs/199-Cucumber---%D0%BC%D0%BE%D0%B9-%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B4-step_definitions-web_steps-rb.html]
 

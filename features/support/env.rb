@@ -2,6 +2,7 @@ begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations
 require 'capybara' 
 require 'capybara/dsl' 
 require 'capybara/cucumber'
+require 'cucumber/formatter/unicode'
 Capybara.default_driver = :selenium
-Capybara.app_host = 'http://www.google.com' 
+Capybara.app_host = 'http://mail.ru' 
 World(Capybara) 
